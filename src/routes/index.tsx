@@ -25,54 +25,45 @@ export const Route = createFileRoute("/")({
 
 const cabanas = [
   {
-    name: "Cabaña Edelweiss",
-    capacity: "2 personas",
-    desc: "Suite de pareja con chimenea, tina exterior y vista al bosque nublado.",
-    tag: "Romántica",
-  },
-  {
-    name: "Cabaña Tirol",
-    capacity: "4 personas",
-    desc: "Dos dormitorios, sala con leñero y terraza panorámica a la montaña.",
-    tag: "Familiar",
-  },
-  {
-    name: "Cabaña Selva Alta",
-    capacity: "6 personas",
-    desc: "Espaciosa, cocina equipada, fogata privada y conexión de alta velocidad.",
-    tag: "Grupos",
-  },
-  {
-    name: "Cabaña Mirador",
-    capacity: "2 personas",
-    desc: "Loft elevado con ventanales de piso a techo y desayuno incluido.",
-    tag: "Workation",
-  },
-  {
-    name: "Cabaña Bosque",
+    name: "Cabaña #1",
     capacity: "3 personas",
-    desc: "Refugio entre árboles con jacuzzi al aire libre y desayuno orgánico.",
-    tag: "Naturaleza",
+    desc: "Nuestra cabaña alpina combina un diseño moderno con el encanto rústico. Con dos pisos y un ambiente acogedor, ofrece todas las comodidades del hogar, rodeada de la tranquilidad de la naturaleza.",
+    tag: "Romántica",
+    img: "src/assets/img/cabana-1.jpeg",
+  },
+  {
+    name: "Cabaña #2",
+    capacity: "7 personas",
+    desc: "Nuestra cabaña alpina #2 tiene un diseño vanguardista y único que te hará sentir como en casa, permitiéndote desconectar del caos de la ciudad. ",
+    tag: "Familiar",
+    img: "src/assets/img/cabana-2.jpg",
+  },
+  {
+    name: "Cabaña #3",
+    capacity: "4 personas",
+    desc: "Nuestra cabaña alpina combina un diseño moderno con el encanto rústico. Con dos pisos y un ambiente acogedor, ofrece todas las comodidades del hogar, rodeada de la tranquilidad de la naturaleza.",
+    tag: "Grupos",
+    img: "src/assets/img/cabana-3.jpeg",
   },
 ];
 
 const servicios = [
   { icon: "🌄", title: "Entorno natural", desc: "Montañas y bosque nublado privilegiados.", img: "src/assets/img/entorno-natural.jpg" },
   { icon: "🏡", title: "Cabañas equipadas", desc: "Estilo alpino, totalmente confortables.", img: "src/assets/img/cabanias-equipadas.jpg" },
-  { icon: "🔥", title: "Fogatas y áreas al aire libre", desc: "Espacios para desconectar.", img: "src/assets/img/fogatas-areas-aire-libre.jpg" },
+  { icon: "🔥", title: "Fogatas y áreas al aire libre", desc: "Espacios para desconectar.", img: "src/assets/img/fogatas-areas-aire-libre.jpeg" },
   { icon: "🍽️", title: "Restaurante-bar", desc: "Carta variada con huerto propio orgánico.", img: "src/assets/img/restaurante-bar.jpg" },
   { icon: "🚴", title: "Aventura", desc: "Caminatas, cuatrimotos, ciclismo y exploración.", img: "src/assets/img/aventura.png" },
   { icon: "📶", title: "Internet alta velocidad", desc: "Pensado para el viajero remoto.", img: "src/assets/img/internet-alta-velocidad.jpg" },
-  { icon: "🌱", title: "Eco-sostenible", desc: "Energía solar y biodigestores.", img: "src/assets/img/eco-sostenible.jpg" },
-  { icon: "🛎️", title: "Servicio personalizado", desc: "Hospitalidad peruana auténtica.", img: "src/assets/img/servicio-personalizado.jpg" },
+  { icon: "🌱", title: "Eco-sostenible", desc: "Energía solar y biodigestores.", img: "src/assets/img/eco-sostenible.jpeg" },
+  { icon: "🛎️", title: "Servicio personalizado", desc: "Hospitalidad peruana auténtica.", img: "src/assets/img/servicio-personalizado.jpeg" },
 ];
 
 const testimonios = [
-  { name: "María G.", text: "Una experiencia inolvidable. Las cabañas son acogedoras y el entorno es mágico. Volveremos el próximo año.", rating: 5, location: "Lima, Perú" },
-  { name: "Carlos R.", text: "El restaurante orgánico es una maravilla. Mi familia quedó encantada con la trucha y el strudel.", rating: 5, location: "Trujillo, Perú" },
-  { name: "Ana L.", text: "Perfecto para desconectar. La atención fue excelente y las vistas de la montaña al amanecer, impresionantes.", rating: 5, location: "Arequipa, Perú" },
-  { name: "Luis M.", text: "La Cabaña Edelweiss superó nuestras expectativas. Ideal para una escapada romántica y tranquila.", rating: 5, location: "Cusco, Perú" },
-  { name: "Sofía P.", text: "Internet rápido para trabajar y naturaleza para relajarse. Lo mejor de ambos mundos en un solo lugar.", rating: 5, location: "Lima, Perú" },
+  { name: "Emanuele E.", text: "Tuvimos una experiencia increíble en este lugar. Desde que llegamos, nos hicieron sentir súper bienvenidos y la atención fue realmente de primera: todo el personal fue muy amable, atento y cálido con nosotros.", rating: 5, location: "Lima, Perú" },
+  { name: "Francesca.", text: "Totalmente recomendado! Las cabañas son preciosas, el paisaje es espectacular y Pierina y Miguel son muy atentos! Además el lugar es seguro y muy tranquilo. Excelente elección, espero volver muy pronto!", rating: 5, location: "Lima, Perú" },
+  { name: "Diana R.", text: "Me encantó la experiencia! La villa es hermosa, cuenta con todo lo que necesitamos para nuestra estadía. Miguel y Pierina están en todo momento dispuestos a ayudarnos! Recomiendo mil este lugar! Espero volver pronto!", rating: 5, location: "Lima, Perú" },
+  { name: "Isaias G.", text: "Uno de los mejores (Por no decir el mejor) hotel de Oxapampa, muy recomendado para todos :) .", rating: 5, location: "Cusco, Perú" },
+  { name: "Natalia J.", text: "Como en casa, desde que entras te hacen sentir como en casa, todos muy amables. Miguel, Pierina y Víctor muy atentos y amables. La cabaña muy hermosa y sobre todo muy limpia. Definitivamente recomendada! , y por supuesto que planeamos volver🥰. Muchas gracias por todo❤️.", rating: 5, location: "Huancayo, Perú" },
 ];
 
 const menu = {
@@ -310,7 +301,7 @@ function Cabanas() {
               {/* [IMAGEN CABAÑA PLACEHOLDER] */}
               <div className="relative h-72 overflow-hidden bg-gradient-to-br from-moss via-forest to-bark">
                 <div className="absolute inset-0 flex items-center justify-center text-cream/40 text-xs font-mono">
-                  [imagen de {c.name}]
+                  <img src={c.img} alt={c.name} className="h-full w-full object-cover" />
                 </div>
                 <span className="absolute left-4 top-4 rounded-full bg-cream/95 px-3 py-1 text-xs font-medium text-primary">
                   {c.tag}
@@ -649,7 +640,9 @@ function Footer() {
             <li>Oxapampa, Pasco — Perú</li>
             <li>reservas@villaalpina.pe</li>
             <li>+51 999 999 999</li>
-            <li>@villaalpina</li>
+            <li><a href="https://www.instagram.com/villaalpinaoxapampa/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Instagram</a></li>
+            <li><a href="https://www.facebook.com/p/Villa-Alpina-Oxapampa-61559405715784/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Facebook</a></li>
+            <li><a href="https://www.airbnb.com.pe/rooms/1127824197339076737?source_impression_id=p3_1787854989_P3-R3yCjpwMcO1tf" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Airbnb</a></li>
           </ul>
         </div>
       </div>
