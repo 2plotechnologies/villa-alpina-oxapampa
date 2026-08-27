@@ -1,5 +1,19 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
+import imgCabana1 from "../assets/img/cabana-1.jpeg";
+import imgCabana2 from "../assets/img/cabana-2.jpg";
+import imgCabana3 from "../assets/img/cabana-3.jpeg";
+import imgCabanasEquipadas from "../assets/img/cabanias-equipadas.jpg";
+import imgEcoSostenible from "../assets/img/eco-sostenible.jpeg";
+import imgEntornoNatural from "../assets/img/entorno-natural.jpg";
+import imgFogatas from "../assets/img/fogatas-areas-aire-libre.jpeg";
+import imgInternet from "../assets/img/internet-alta-velocidad.jpg";
+import imgLogo from "../assets/img/logo.png";
+import imgRestaurante from "../assets/img/restaurante-bar.jpg";
+import imgRestauranteBanner from "../assets/img/restaurante-banner-main.jpg";
+import imgServicioPersonalizado from "../assets/img/servicio-personalizado.jpeg";
+import imgAventura from "../assets/img/aventura.png";
+import imgBanner from "../assets/img/banner.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -29,33 +43,33 @@ const cabanas = [
     capacity: "3 personas",
     desc: "Nuestra cabaña alpina combina un diseño moderno con el encanto rústico. Con dos pisos y un ambiente acogedor, ofrece todas las comodidades del hogar, rodeada de la tranquilidad de la naturaleza.",
     tag: "Romántica",
-    img: "src/assets/img/cabana-1.jpeg",
+    img: imgCabana1,
   },
   {
     name: "Cabaña #2",
     capacity: "7 personas",
     desc: "Nuestra cabaña alpina #2 tiene un diseño vanguardista y único que te hará sentir como en casa, permitiéndote desconectar del caos de la ciudad. ",
     tag: "Familiar",
-    img: "src/assets/img/cabana-2.jpg",
+    img: imgCabana2,
   },
   {
     name: "Cabaña #3",
     capacity: "4 personas",
     desc: "Nuestra cabaña alpina combina un diseño moderno con el encanto rústico. Con dos pisos y un ambiente acogedor, ofrece todas las comodidades del hogar, rodeada de la tranquilidad de la naturaleza.",
     tag: "Grupos",
-    img: "src/assets/img/cabana-3.jpeg",
+    img: imgCabana3,
   },
 ];
 
 const servicios = [
-  { icon: "🌄", title: "Entorno natural", desc: "Montañas y bosque nublado privilegiados.", img: "src/assets/img/entorno-natural.jpg" },
-  { icon: "🏡", title: "Cabañas equipadas", desc: "Estilo alpino, totalmente confortables.", img: "src/assets/img/cabanias-equipadas.jpg" },
-  { icon: "🔥", title: "Fogatas y áreas al aire libre", desc: "Espacios para desconectar.", img: "src/assets/img/fogatas-areas-aire-libre.jpeg" },
-  { icon: "🍽️", title: "Restaurante-bar", desc: "Carta variada con huerto propio orgánico.", img: "src/assets/img/restaurante-bar.jpg" },
-  { icon: "🚴", title: "Aventura", desc: "Caminatas, cuatrimotos, ciclismo y exploración.", img: "src/assets/img/aventura.png" },
-  { icon: "📶", title: "Internet alta velocidad", desc: "Pensado para el viajero remoto.", img: "src/assets/img/internet-alta-velocidad.jpg" },
-  { icon: "🌱", title: "Eco-sostenible", desc: "Energía solar y biodigestores.", img: "src/assets/img/eco-sostenible.jpeg" },
-  { icon: "🛎️", title: "Servicio personalizado", desc: "Hospitalidad peruana auténtica.", img: "src/assets/img/servicio-personalizado.jpeg" },
+  { icon: "🌄", title: "Entorno natural", desc: "Montañas y bosque nublado privilegiados.", img: imgEntornoNatural },
+  { icon: "🏡", title: "Cabañas equipadas", desc: "Estilo alpino, totalmente confortables.", img: imgCabanasEquipadas },
+  { icon: "🔥", title: "Fogatas y áreas al aire libre", desc: "Espacios para desconectar.", img: imgFogatas },
+  { icon: "🍽️", title: "Restaurante-bar", desc: "Carta variada con huerto propio orgánico.", img: imgRestaurante },
+  { icon: "🚴", title: "Aventura", desc: "Caminatas, cuatrimotos, ciclismo y exploración.", img: imgAventura },
+  { icon: "📶", title: "Internet alta velocidad", desc: "Pensado para el viajero remoto.", img: imgInternet },
+  { icon: "🌱", title: "Eco-sostenible", desc: "Energía solar y biodigestores.", img: imgEcoSostenible },
+  { icon: "🛎️", title: "Servicio personalizado", desc: "Hospitalidad peruana auténtica.", img: imgServicioPersonalizado },
 ];
 
 const testimonios = [
@@ -141,7 +155,7 @@ function Nav() {
           {/* [LOGO PLACEHOLDER] */}
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-lg">
             {/*LOGO DE VILLA ALPINA REDONDEADO.*/}
-            <img src="src/assets/img/logo.png" alt="Logo" className="h-full w-full object-contain" style={{ borderRadius: "50%" }} />
+            <img src={imgLogo} alt="Logo" className="h-full w-full object-contain" style={{ borderRadius: "50%" }} />
           </div>
           <span className="font-display text-xl font-semibold tracking-tight">
             Villa Alpina
@@ -175,7 +189,7 @@ function Hero() {
       <div className="absolute inset-0 bg-gradient-to-br from-forest via-moss to-bark">
         <div className="absolute inset-0 flex items-center justify-center text-cream/30 text-sm font-mono">
           <img
-            src="src/assets/img/banner.png"
+            src={imgBanner}
             alt="Imagen de fondo · paisaje villa alpina."
             className="absolute inset-0 h-full w-full object-cover"
           />
@@ -389,7 +403,7 @@ function Restaurante() {
           {/* [IMAGEN RESTAURANTE PLACEHOLDER] */}
           <div className="relative h-64 overflow-hidden rounded-2xl bg-gradient-to-br from-bark to-moss md:h-80">
             <div className="absolute inset-0 flex items-center justify-center text-cream/50 text-xs font-mono">
-              <img src="src/assets/img/restaurante-banner-main.jpg" alt="Restaurante" className="h-full w-full object-cover" />
+                <img src={imgRestauranteBanner} alt="Restaurante" className="h-full w-full object-cover" />
             </div>
           </div>
         </div>
@@ -616,7 +630,7 @@ function Footer() {
         <div className="md:col-span-2">
           <div className="flex items-center gap-2">
             <div className="flex h-9 w-9 items-center justify-center rounded-full bg-primary text-primary-foreground font-display text-lg">
-              <img src="src/assets/img/logo.png" alt="Logo" className="h-full w-full object-cover" style={{ borderRadius: "50%" }} />
+              <img src={imgLogo} alt="Logo" className="h-full w-full object-cover" style={{ borderRadius: "50%" }} />
             </div>
             <span className="font-display text-xl">Villa Alpina</span>
           </div>
