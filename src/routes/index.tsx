@@ -1,6 +1,15 @@
+/* eslint-disable prettier/prettier */
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import imgCabana1 from "../assets/img/cabana-1.jpeg";
+import { Dialog, DialogContent, DialogDescription, DialogTitle } from "../components/ui/dialog";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "../components/ui/carousel";
+import imgCabana1 from "../assets/img/cabana-1.jpg";
 import imgCabana2 from "../assets/img/cabana-2.jpg";
 import imgCabana3 from "../assets/img/cabana-3.jpeg";
 import imgCabanasEquipadas from "../assets/img/cabanias-equipadas.jpg";
@@ -13,7 +22,11 @@ import imgRestaurante from "../assets/img/restaurante-bar.jpg";
 import imgRestauranteBanner from "../assets/img/restaurante-banner-main.jpg";
 import imgServicioPersonalizado from "../assets/img/servicio-personalizado.jpeg";
 import imgAventura from "../assets/img/aventura.png";
-import imgBanner from "../assets/img/banner.png";
+import imgBanner from "../assets/img/banner.jpg";
+import imgServicioPersonalizado1 from "../assets/img/servicio_personalizado_1.jpg";
+import imgServicioPersonalizado2 from "../assets/img/servicio_personalizado_2.jpg";
+import imgServicioPersonalizado3 from "../assets/img/servicio_personalizado_3.jpg";
+import imgServicioPersonalizado4 from "../assets/img/servicio_personalizado_4.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -56,7 +69,7 @@ const cabanas = [
     name: "Cabaña #3",
     capacity: "4 personas",
     desc: "Nuestra cabaña alpina combina un diseño moderno con el encanto rústico. Con dos pisos y un ambiente acogedor, ofrece todas las comodidades del hogar, rodeada de la tranquilidad de la naturaleza.",
-    tag: "Grupos",
+    tag: "Pet Friendly",
     img: imgCabana3,
   },
 ];
@@ -81,27 +94,78 @@ const testimonios = [
 ];
 
 const menu = {
-  Entradas: [
-    { name: "Ensalada del huerto", desc: "Brotes orgánicos, queso fresco, vinagreta de hierbas.", price: "S/. 28" },
-    { name: "Crema de zapallo loche", desc: "Con crocante de pan de campo.", price: "S/. 24" },
-    { name: "Tabla alpina", desc: "Quesos, embutidos artesanales y panes de masa madre.", price: "S/. 48" },
+  Desayunos: [
+    { name: "Regional", desc: "Huevos fritos con cecina o chorizo artesanales, acompañados de yuca frita, plátano frito y tostada con mermelada, jugo de frutas y café de la zona.", price: "S/. 24" },
+    { name: "Provenzal", desc: "Omelette de verduras relleno de queso y coronado con rodajas de palta, pan, jugo de frutas y café de la zona.", price: "S/. 21" },
+    { name: "Fit", desc: "Ensalada de frutas, huevo revuelto, palta orgánica, pan y café de la zona.", price: "S/. 18" },
   ],
-  "Platos de fondo": [
-    { name: "Trucha al ajo y hierbas", desc: "Trucha de los Andes, papas nativas, mantequilla de salvia.", price: "S/. 52" },
-    { name: "Lomo saltado de la sierra", desc: "Res, papa amarilla, arroz graneado.", price: "S/. 46" },
-    { name: "Risotto de hongos del bosque", desc: "Hongos locales, parmesano, aceite de trufa.", price: "S/. 44" },
-    { name: "Pollo a la leña", desc: "Marinado en cerveza artesanal y hierbas del huerto.", price: "S/. 42" },
+  Sandwiches: [
+    { name: "Sandwich de pechuga de pollo a la plancha", desc: "Servido con lechuga y tomate.", price: "S/. 12" },
+    { name: "Sandwich mixto caliente", desc: "Pan de molde con jamón y queso edam. + huevo (S/. 2.00)", price: "S/. 8" },
+    { name: "Sandwich de pollo deshilachado", desc: "Con lechuga, mayonesa y papas al hilo.", price: "S/. 10" },
+    { name: "Empanada de carne", desc: "", price: "S/. 9" },
   ],
-  Postres: [
-    { name: "Strudel de manzana", desc: "Receta austríaca con helado de vainilla.", price: "S/. 22" },
-    { name: "Mousse de lúcuma", desc: "Con crocante de cacao orgánico.", price: "S/. 20" },
+  Hamburguesas: [
+    { name: "Villa Alpina", desc: "Hamburguesa artesanal con 180 g de carne vacuna, lechuga, tomate, pepinillo, tocino y queso cheddar. Servida con papas amarillas fritas.", price: "S/. 24" },
+    { name: "Cheeseburger tradicional", desc: "Hamburguesa artesanal con 180 g de carne vacuna, lechuga, tomate y doble queso cheddar. Servida con papas amarillas fritas.", price: "S/. 21" },
   ],
-  Bebidas: [
-    { name: "Cerveza artesanal Oxapampa", desc: "Variedades de la región.", price: "S/. 18" },
-    { name: "Vino caliente alpino", desc: "Especias, naranja y miel.", price: "S/. 22" },
-    { name: "Jugos del huerto", desc: "Frutas de cosecha del día.", price: "S/. 14" },
+  Piqueos: [
+    { name: "Tequeños de lomo saltado (6 unidades)", desc: "Servidos con salsa huancaína.", price: "S/. 14" },
+    { name: "Tequeños de lomo saltado (12 unidades)", desc: "Servidos con salsa huancaína.", price: "S/. 26" },
+    { name: "Alitas BBQ o acevichadas (6 unidades)", desc: "Servidas con papas amarillas fritas.", price: "S/. 20" },
+    { name: "Alitas BBQ o acevichadas (12 unidades)", desc: "Servidas con papas amarillas fritas.", price: "S/. 38" },
+    { name: "Chicharrón de pollo", desc: "Servido con papas fritas.", price: "S/. 26" },
+  ],
+  "Platos a la carta": [
+    { name: "Lomo saltado", desc: "", price: "S/. 32" },
+    { name: "Chaufa regional", desc: "Con chorizo y cecina artesanales.", price: "S/. 31" },
+    { name: "Pechuga de pollo a la plancha", desc: "Servida con arroz y ensalada fresca.", price: "S/. 29" },
+    { name: "Fetuccini al pesto con milanesa de pollo al panko", desc: "", price: "S/. 33" },
+    { name: "Sopa casera de pollo", desc: "", price: "S/. 18" },
+  ],
+  "Bebidas frías": [
+    { name: "Cerveza Dorcher (artesanal)", desc: "Cranberry / Radler (limón).", price: "S/. 12" },
+    { name: "Pilsen 305 ml", desc: "", price: "S/. 7" },
+    { name: "Cusqueña 305 ml", desc: "", price: "S/. 8" },
+    { name: "Gaseosas medianas", desc: "", price: "S/. 3" },
+    { name: "Agua Cielo 625 ml", desc: "", price: "S/. 2.50" },
+    { name: "Jugos de fruta", desc: "", price: "S/. 8" },
+  ],
+  Cócteles: [
+    { name: "Pisco sour Villa Alpina", desc: "Hecho con limones orgánicos de nuestro huerto.", price: "S/. 22" },
+    { name: "Maracuyá sour", desc: "", price: "S/. 23" },
+    { name: "Chilcano clásico", desc: "", price: "S/. 18" },
+    { name: "Chilcano de maracuyá", desc: "", price: "S/. 19" },
+    { name: "Cuba libre", desc: "", price: "S/. 17" },
+    { name: "Jack & Coke", desc: "Whiskey Jack Daniels y Coca Cola.", price: "S/. 24" },
+  ],
+  "Bebidas calientes": [
+    { name: "Café americano", desc: "", price: "S/. 7" },
+    { name: "Infusiones naturales", desc: "Anís, manzanilla, flor de jamaica.", price: "S/. 5" },
+  ],
+  "Vinos en botella": [
+    { name: "Frontera", desc: "", price: "S/. 50" },
+    { name: "Casillero del Diablo", desc: "Preguntar por cepas disponibles.", price: "S/. 75" },
   ],
 };
+
+const menuNota = "NOTA: Nuestros cócteles en base a pisco son elaborados con Pisco La Caravedo by Porton y nuestros cócteles en base a ron son elaborados con Ron Bacardi.";
+
+const serviciosPersonalizados = [
+  { name: "Servicio de fogata", description: "Incluye leña y encendido", price: "S/ 35" },
+  { name: "Servicio de parrilla", description: "Incluye alquiler de la parrilla, set de utensilios parrilleros, tabla de picar, mesa y sillas outdoor", price: "S/ 50" },
+  { name: "Tour en cuatrimoto", description: "(Turno mañana o tarde) Tour guiado de aproximadamente 2 horas, que recorre la hacienda Yanachaga (incluye tour interno), visita a la plaza de armas en Huancabamba, bosque de pinos y puentes colgantes. Incluye fotos y videos", price: "S/ 100 por persona" },
+  { name: "Alquiler de bicicletas montañeras", description: "Alquiler de las bicicletas para uso dentro del lodge y alrededores", price: "Medio día – S/.45\nFull day – S/.90" },
+  { name: "Restaurante-Bar", description: "Servicio en salón o en la cabaña de 8 a.m. a 10 p.m.", price: "Consultar carta" },
+  { name: "Venta de productos de higiene personal", description: "Repelente, cepillo de dientes de bambú, pasta dental, pastillas para gripe, alergia o dolor de cabeza.", price: "Consultar precios" },
+];
+
+const imagenesServicioPersonalizado = [
+  imgServicioPersonalizado1,
+  imgServicioPersonalizado2,
+  imgServicioPersonalizado3,
+  imgServicioPersonalizado4,
+];
 
 /* ---------- COMPONENT ---------- */
 
@@ -115,14 +179,47 @@ function Index() {
     checkout: "",
     adultos: 2,
     ninos: 0,
+    mascotas: 0,
+    infantes: 0,
     mensaje: "",
-  });
+  })
   const [enviado, setEnviado] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setEnviado(true);
-    setTimeout(() => setEnviado(false), 5000);
+
+    const formData = new FormData();
+    formData.append("access_key", "bd7a4db8-b458-40fb-b908-fde192e38e08");
+    formData.append("subject", "Nueva solicitud de reserva - Villa Alpina");
+    formData.append("name", reserva.nombre);
+    formData.append("email", reserva.email);
+    formData.append("phone", reserva.telefono);
+    formData.append("cabin", reserva.cabana);
+    formData.append("check_in", reserva.checkin);
+    formData.append("check_out", reserva.checkout);
+    formData.append("adults", String(reserva.adultos));
+    formData.append("children", String(reserva.ninos));
+    formData.append("pets", String(reserva.mascotas));
+    formData.append("infants", String(reserva.infantes));
+    formData.append("message", reserva.mensaje || "Sin mensaje adicional");
+
+    try {
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || "No se pudo enviar la solicitud");
+      }
+
+      setEnviado(true);
+      setTimeout(() => setEnviado(false), 5000);
+    } catch (error) {
+      console.error("Error al enviar la solicitud de reserva:", error);
+      setEnviado(false);
+    }
   };
 
   return (
@@ -347,8 +444,11 @@ function Cabanas() {
 }
 
 function Servicios() {
+  const [servicioPersonalizadoAbierto, setServicioPersonalizadoAbierto] = useState(false);
+
   return (
-    <section id="servicios" className="mx-auto max-w-7xl px-6 py-24 md:py-32">
+    <>
+      <section id="servicios" className="mx-auto max-w-7xl px-6 py-24 md:py-32">
       <div className="mb-14 max-w-2xl">
         <p className="text-xs uppercase tracking-[0.25em] text-accent">Experiencia</p>
         <h2 className="mt-4 text-4xl font-medium leading-tight md:text-5xl">
@@ -360,27 +460,87 @@ function Servicios() {
         </p>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-        {servicios.map((s) => (
-          <div
-            key={s.title}
-            className="group overflow-hidden rounded-3xl border border-border bg-card shadow-sm transition-shadow hover:shadow-card"
-          >
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {servicios.map((s) => (
+            <button
+              key={s.title}
+              type="button"
+              onClick={() => s.title === "Servicio personalizado" && setServicioPersonalizadoAbierto(true)}
+              className="group overflow-hidden rounded-3xl border border-border bg-card text-left shadow-sm transition-shadow hover:shadow-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+              aria-haspopup={s.title === "Servicio personalizado" ? "dialog" : undefined}
+            >
             {/* [IMAGEN SERVICIO PLACEHOLDER.] */}
             <div className="relative h-48 overflow-hidden bg-gradient-to-br from-moss/30 via-forest/20 to-bark/30">
               <div className="absolute inset-0 flex items-center justify-center text-xs font-mono text-muted-foreground/50">
-                <img src={s.img} alt={s.title} className="h-full w-full object-cover" />
+                <img src={s.img} alt={s.title} className="h-full w-full object-cover object-center" />
               </div>
+              {s.title === "Servicio personalizado" && (
+                <span className="absolute bottom-3 right-3 rounded-full bg-primary/90 px-4 py-2 text-xs font-semibold text-primary-foreground shadow-lg transition-colors group-hover:bg-accent group-hover:text-accent-foreground">
+                  Ver más
+                </span>
+              )}
             </div>
-            <div className="p-6">
-              <span className="text-3xl">{s.icon}</span>
-              <h3 className="mt-3 font-display text-xl text-primary">{s.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+              <div className="p-6">
+                <span className="text-3xl">{s.icon}</span>
+                <h3 className="mt-3 font-display text-xl text-primary">{s.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{s.desc}</p>
+              </div>
+            </button>
+          ))}
+        </div>
+      </section>
+
+      <Dialog open={servicioPersonalizadoAbierto} onOpenChange={setServicioPersonalizadoAbierto}>
+        <DialogContent className="max-h-[90vh] max-w-5xl overflow-y-auto p-0">
+          <div className="grid md:grid-cols-[minmax(280px,0.9fr)_1.1fr]">
+            <div className="h-72 overflow-hidden bg-primary md:h-[680px]">
+              <Carousel className="h-72 md:h-[680px]" opts={{ loop: true }}>
+                <CarouselContent className="ml-0 h-72 md:h-[680px]">
+                {imagenesServicioPersonalizado.map((imagen, index) => (
+                  <CarouselItem key={imagen} className="flex h-72 basis-full pl-0 md:h-[680px]">
+                    <img
+                      src={imagen}
+                      alt={`Servicio personalizado, imagen ${index + 1}`}
+                      className="block h-72 w-full object-cover object-center md:h-[680px]"
+                    />
+                  </CarouselItem>
+                ))}
+                </CarouselContent>
+                <CarouselPrevious className="left-4 border-primary-foreground/40 bg-primary/70 text-primary-foreground hover:bg-primary" />
+                <CarouselNext className="right-4 border-primary-foreground/40 bg-primary/70 text-primary-foreground hover:bg-primary" />
+              </Carousel>
+            </div>
+
+            <div className="p-6 sm:p-8">
+              <DialogTitle className="font-display text-3xl text-primary">Servicio personalizado</DialogTitle>
+              <DialogDescription className="mt-4 text-sm leading-relaxed text-foreground">
+                Gracias por elegir Villa Alpina para tu estadía en Oxapampa. Además de nuestras acogedoras cabañas, ofrecemos los siguientes servicios adicionales para hacer tu visita aún más especial.
+              </DialogDescription>
+              <div className="mt-6 overflow-hidden rounded-lg border border-border">
+                <div className="grid grid-cols-[1fr_1.5fr_0.8fr] gap-3 bg-muted px-3 py-3 text-xs font-semibold uppercase tracking-wide text-primary sm:px-4">
+                  <span>Servicio</span>
+                  <span>Descripción</span>
+                  <span>Precio</span>
+                </div>
+                {serviciosPersonalizados.map((servicio) => (
+                  <div key={servicio.name} className="grid grid-cols-[1fr_1.5fr_0.8fr] gap-3 border-t border-border px-3 py-3 text-xs leading-relaxed sm:px-4 sm:text-sm">
+                    <span className="font-medium text-primary">{servicio.name}</span>
+                    <span className="whitespace-pre-line text-muted-foreground">{servicio.description}</span>
+                    <span className="whitespace-pre-line font-medium text-accent">{servicio.price}</span>
+                  </div>
+                ))}
+              </div>
+              <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+                Para reservas o más información, envíe un mensaje de WhatsApp al{" "}
+                <a href="https://wa.me/51991995618" target="_blank" rel="noreferrer" className="font-semibold text-accent underline underline-offset-4">
+                  991995618
+                </a>.
+              </p>
             </div>
           </div>
-        ))}
-      </div>
-    </section>
+        </DialogContent>
+      </Dialog>
+    </>
   );
 }
 
@@ -435,6 +595,7 @@ function Restaurante() {
             </div>
           ))}
         </div>
+        <p className="mt-10 max-w-2xl text-sm text-primary-foreground/70">{menuNota}</p>
       </div>
     </section>
   );
@@ -450,6 +611,8 @@ interface ReservasProps {
     checkout: string;
     adultos: number;
     ninos: number;
+    mascotas: number;
+    infantes: number;
     mensaje: string;
   };
   setReserva: React.Dispatch<React.SetStateAction<ReservasProps["reserva"]>>;
@@ -478,15 +641,15 @@ function Reservas({ reserva, setReserva, onSubmit, enviado }: ReservasProps) {
           <div className="mt-10 space-y-4 rounded-2xl border border-border bg-secondary/50 p-6">
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground">Ubicación</p>
-              <p className="mt-1 text-sm">A 25 minutos del centro de Oxapampa, Pasco — Perú</p>
+              <p className="mt-1 text-sm">Carretera a Huancabamba S/N (A 25 minutos del centro de Oxapampa, Pasco — Perú)</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground">Check-in / Check-out</p>
-              <p className="mt-1 text-sm">15:00 hrs · 11:00 hrs</p>
+              <p className="mt-1 text-sm">03:00 pm · 11:00 am</p>
             </div>
             <div>
               <p className="text-xs uppercase tracking-wider text-muted-foreground">Contacto</p>
-              <p className="mt-1 text-sm">reservas@villaalpina.pe · +51 999 999 999</p>
+              <p className="mt-1 text-sm">corporacionvillaalpina@outlook.com · WhatsApp: +51 991 995 618</p>
             </div>
           </div>
         </div>
@@ -593,6 +756,29 @@ function Reservas({ reserva, setReserva, onSubmit, enviado }: ReservasProps) {
               />
             </div>
 
+            <div>
+              <label className={labelClass}>Mascotas</label>
+              <input
+                type="number"
+                min={0}
+                max={5}
+                value={reserva.mascotas}
+                onChange={(e) => setReserva((r) => ({ ...r, mascotas: Number(e.target.value) }))}
+                className={inputClass}
+              />
+            </div>
+            <div>
+              <label className={labelClass}>Infantes</label>
+              <input
+                type="number"
+                min={0}
+                max={5}
+                value={reserva.infantes}
+                onChange={(e) => setReserva((r) => ({ ...r, infantes: Number(e.target.value) }))}
+                className={inputClass}
+              />
+            </div>
+
             <div className="sm:col-span-2">
               <label className={labelClass}>Mensaje (opcional)</label>
               <textarea
@@ -652,8 +838,8 @@ function Footer() {
           <h4 className="font-display text-base text-primary">Contacto</h4>
           <ul className="mt-4 space-y-2 text-sm text-muted-foreground">
             <li>Oxapampa, Pasco — Perú</li>
-            <li>reservas@villaalpina.pe</li>
-            <li>+51 999 999 999</li>
+            <li>corporacionvillaalpina@outlook.com</li>
+            <li>WhatsApp: +51 991 995 618</li>
             <li><a href="https://www.instagram.com/villaalpinaoxapampa/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Instagram</a></li>
             <li><a href="https://www.facebook.com/p/Villa-Alpina-Oxapampa-61559405715784/" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Facebook</a></li>
             <li><a href="https://www.airbnb.com.pe/rooms/1127824197339076737?source_impression_id=p3_1787854989_P3-R3yCjpwMcO1tf" target="_blank" rel="noopener noreferrer" className="hover:text-accent">Airbnb</a></li>
